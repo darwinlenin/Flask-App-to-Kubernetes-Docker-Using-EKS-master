@@ -190,6 +190,15 @@ Resources:
                   - iam:GetRole
                   - iam:UpdateAssumeRolePolicy
 
+  KubectlAssumeRoleCustomResource:
+    Type: Custom::CustomResource
+    Properties:
+      ServiceToken: !GetAtt CustomResourceLambda.Arn
+      KubectlRoleName: !Ref KubectlRoleName
+      CodeBuildServiceRoleArn: !GetAtt CodeBuildServiceRole.Arn
+    DependsOn:
+      - CustomResourceLambda
+      - CodeBuildServiceRole
 
   CodePipelineServiceRole:
     Type: AWS::IAM::Role
