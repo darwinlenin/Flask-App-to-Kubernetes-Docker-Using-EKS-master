@@ -326,6 +326,7 @@ Resources:
             Value: !Sub arn:aws:iam::${AWS::AccountId}:role/${KubectlRoleName}
       Name: !Ref AWS::StackName
       ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+    DependsOn: KubectlAssumeRoleCustomResource
 
   CodePipelineGitHub:
     Type: AWS::CodePipeline::Pipeline
