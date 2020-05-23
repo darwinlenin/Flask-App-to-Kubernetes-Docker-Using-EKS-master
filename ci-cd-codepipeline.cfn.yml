@@ -191,7 +191,7 @@ Resources:
                   - iam:UpdateAssumeRolePolicy
 
   KubectlAssumeRoleCustomResource:
-    Type: AWS::CloudFormation::CustomResource
+    Type: Custom::CustomResource
     Properties:
       ServiceToken: !GetAtt CustomResourceLambda.Arn
       KubectlRoleName: !Ref KubectlRoleName
